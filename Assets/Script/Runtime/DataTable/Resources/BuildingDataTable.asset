@@ -13,9 +13,31 @@ MonoBehaviour:
   m_Name: BuildingDataTable
   m_EditorClassIdentifier: 
   buildings:
-  - mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - name: Timberman
+    mesh: {fileID: 4657255842325776, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
     texture: {fileID: 0}
-    resourceEarn:
-    - amount: 0
-      name: 
+    resourcesEarn:
+    - id: 0
+      amount: 1
     resourcesToBuild: []
+    generationRate: 1
+  - name: Iron Mine
+    mesh: {fileID: 4672332234487642, guid: ed86c303c0d761e4c9b890662dd882a3, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 1
+      amount: 1
+    resourcesToBuild:
+    - id: 0
+      amount: 50
+    generationRate: 1
+  - name: Gold Mine
+    mesh: {fileID: 4549183452752130, guid: 0f09218de0063234fa95d7fe64da775b, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 2
+      amount: 1
+    resourcesToBuild:
+    - id: 1
+      amount: 50
+    generationRate: 1

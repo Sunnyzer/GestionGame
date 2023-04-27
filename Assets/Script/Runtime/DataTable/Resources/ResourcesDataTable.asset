@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: ResourcesDataTable
   m_EditorClassIdentifier: 
   datas:
-  - name: 
+  - name: Wood
+    texture: {fileID: 0}
+  - name: Iron
+    texture: {fileID: 0}
+  - name: Gold
     texture: {fileID: 0}

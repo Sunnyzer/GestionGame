@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : Singleton<PlayerInventory>
 {
-    // Start is called before the first frame update
-    void Start()
+    Dictionary<int, int> inventory = new Dictionary<int, int>();
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Init();
+    }
+    public void Init()
+    {
+        List<ResourceData> data = DataTableManager.Instance.ResourcesDataTable.Datas;
+        for (int i = 0; i < data.Count; i++)
+        {
+            inventory.Add(i, 0);
+        }
+    }
+    public void AddResource(Resource _resource)
+    {
+        AddResource(_resource.ID, _resource.Amount);
+    }
+    public void AddResource(int _ID, int _amount)
+    {
+        inventory[_ID] = _amount;
     }
 }

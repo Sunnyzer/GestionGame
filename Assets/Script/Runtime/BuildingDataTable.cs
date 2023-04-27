@@ -6,4 +6,5 @@ using UnityEngine;
 public class BuildingDataTable : ScriptableObject
 {
     [SerializeField] List<BuildingData> buildings = new List<BuildingData>();
+    public List<BuildingData> Buildings => buildings;
 }

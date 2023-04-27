@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class Resource
 {
+    [SerializeField,HideInInspector] int id = 0;
     [SerializeField] int amount;
-    [SerializeField] string name;
+    public int ID => id;
+    public int Amount => amount;
 }
