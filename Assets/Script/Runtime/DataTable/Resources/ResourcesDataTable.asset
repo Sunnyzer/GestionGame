@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3c7b4a80a95ec47b23e4e492a3046f, type: 3}
   m_Name: ResourcesDataTable
   m_EditorClassIdentifier: 
+  resourceUI: {fileID: -6901778796002577584, guid: 5039b5127a4ec454c8ba6058bc1e04bb, type: 3}
   datas:
   - name: Wood
     texture: {fileID: 0}

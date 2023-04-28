@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResourceData
 {
     [SerializeField] string name;
-    [SerializeField] Texture2D texture;
+    [SerializeField] Sprite sprite;
     public string Name => name;
-    public Texture2D Texture => texture;
+    public Sprite Sprite => sprite;
 }

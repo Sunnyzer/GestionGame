@@ -1,8 +1,10 @@
+using UnityEditor;
 using UnityEngine;
 
-public class Building : InteractMenu
+public class Building : MonoBehaviour,IInteract
 {
     BuildingData buildingData;
+    public BuildingData BuildingData => buildingData;
     Farmer currentFarmer = null;
     [SerializeField] BoxCollider boxCollider = null;
     float time = 0;
@@ -52,5 +54,13 @@ public class Building : InteractMenu
     {
         buildingData = _buildingData;
         Init(buildingData);
+    }
+
+    public void Interaction()
+    {
+        BuildingUI _buildingUIPrefab = DataTableManager.Instance.BuildingDataTable.BuildingUI;
+        BuildingUI _buildingUI = Instantiate(_buildingUIPrefab);
+        _buildingUI.Init(this);
+        UIManager.Instance.DisplayInteractUI(_buildingUI);
     }
 }

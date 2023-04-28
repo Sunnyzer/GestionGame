@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a978cb63389e5ee40a848b5afe58490d, type: 3}
   m_Name: BuildingDataTable
   m_EditorClassIdentifier: 
+  buildingUI: {fileID: 1792130275152466422, guid: 67e98983ff3686d439d561520820e22b, type: 3}
+  buildingPrefab: {fileID: 2920914893818121626, guid: c9556d87862ae3441a4b544f3443190c, type: 3}
   buildings:
   - name: Timberman
     mesh: {fileID: 4657255842325776, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
@@ -19,6 +21,8 @@ MonoBehaviour:
     resourcesEarn:
     - id: 0
       amount: 1
+    - id: 1
+      amount: 2
     resourcesToBuild: []
     generationRate: 1
   - name: Iron Mine
