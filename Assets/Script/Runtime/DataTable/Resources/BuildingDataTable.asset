@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a978cb63389e5ee40a848b5afe58490d, type: 3}
   m_Name: BuildingDataTable
   m_EditorClassIdentifier: 
-  buildingUI: {fileID: 1792130275152466422, guid: 67e98983ff3686d439d561520820e22b, type: 3}
+  buildingUI: {fileID: 4367111715661299066, guid: 12f63aee05f49de4e807cade8ebd47f5, type: 3}
   buildingPrefab: {fileID: 2920914893818121626, guid: c9556d87862ae3441a4b544f3443190c, type: 3}
   buildings:
   - name: Timberman
@@ -21,9 +21,10 @@ MonoBehaviour:
     resourcesEarn:
     - id: 0
       amount: 1
-    - id: 1
-      amount: 2
     resourcesToBuild: []
+    resourcesToUpgrade:
+    - id: 1
+      amount: 5
     generationRate: 1
   - name: Iron Mine
     mesh: {fileID: 4672332234487642, guid: ed86c303c0d761e4c9b890662dd882a3, type: 3}
@@ -34,6 +35,7 @@ MonoBehaviour:
     resourcesToBuild:
     - id: 0
       amount: 50
+    resourcesToUpgrade: []
     generationRate: 1
   - name: Gold Mine
     mesh: {fileID: 4549183452752130, guid: 0f09218de0063234fa95d7fe64da775b, type: 3}
@@ -44,4 +46,5 @@ MonoBehaviour:
     resourcesToBuild:
     - id: 1
       amount: 50
+    resourcesToUpgrade: []
     generationRate: 1

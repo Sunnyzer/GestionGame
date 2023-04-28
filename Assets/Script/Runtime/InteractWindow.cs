@@ -15,6 +15,7 @@ public class InteractWindow : MonoBehaviour
              Destroy(currentInteractUI.gameObject);
         currentInteractUI = _interactUI;
         currentInteractUI.transform.SetParent(interactUI);
+        currentInteractUI.transform.position = interactUI.transform.position;
     }
     public void SetObjectName(string _objectName)
     {

@@ -10,6 +10,7 @@ public class BuildingData : ISelectable
     [SerializeField] Texture2D texture;
     [SerializeField] List<Resource> resourcesEarn;
     [SerializeField] List<Resource> resourcesToBuild;
+    [SerializeField] List<Resource> resourcesToUpgrade;
     [SerializeField] float generationRate = 1;
 
     public string Name => name;
@@ -17,6 +18,7 @@ public class BuildingData : ISelectable
     public Texture2D Texture => texture;
     public List<Resource> ResourceEarn => resourcesEarn;
     public List<Resource> ResourcesToBuild => resourcesToBuild;
+    public List<Resource> ResourcesToUpgrade => resourcesToUpgrade;
     public float GenerationRate => generationRate;
 
     public void CreateBuilding(Vector3 _position)

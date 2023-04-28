@@ -15,8 +15,10 @@ MonoBehaviour:
   resourceUI: {fileID: -6901778796002577584, guid: 5039b5127a4ec454c8ba6058bc1e04bb, type: 3}
   datas:
   - name: Wood
-    texture: {fileID: 0}
+    sprite: {fileID: 545229654, guid: aed4328e7f2d852459e53d57ad9fc2ba, type: 3}
   - name: Iron
-    texture: {fileID: 0}
+    sprite: {fileID: 1179163513, guid: aed4328e7f2d852459e53d57ad9fc2ba, type: 3}
   - name: Gold
-    texture: {fileID: 0}
+    sprite: {fileID: -1851859559, guid: aed4328e7f2d852459e53d57ad9fc2ba, type: 3}
+  - name: Diamond
+    sprite: {fileID: -1157594568, guid: aed4328e7f2d852459e53d57ad9fc2ba, type: 3}

@@ -55,7 +55,13 @@ public class Building : MonoBehaviour,IInteract
         buildingData = _buildingData;
         Init(buildingData);
     }
-
+    public void Upgrade()
+    {
+        if (PlayerInventory.Instance.HaveEnoughResources(buildingData.ResourcesToUpgrade))
+            Debug.Log("Upgrade");
+        else
+            Debug.Log("Can t Upgrade");
+    }
     public void Interaction()
     {
         BuildingUI _buildingUIPrefab = DataTableManager.Instance.BuildingDataTable.BuildingUI;

@@ -6,6 +6,9 @@ public class BuyButton : MonoBehaviour
     public void SetBuildingData()
     {
         BuildingData _buildingData = buildingData;
-        Hand.Instance.SetSelectable(_buildingData);
+        if (PlayerInventory.Instance.UseResources(_buildingData.ResourcesToBuild))
+        {
+            Hand.Instance.SetSelectable(_buildingData);
+        }
     }
 }
