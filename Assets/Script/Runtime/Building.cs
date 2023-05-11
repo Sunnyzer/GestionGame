@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Building : MonoBehaviour,IInteract
 {
+    [SerializeField] Farmer currentFarmer = null;
+    [SerializeField] BoxCollider boxCollider = null;
     BuildingData buildingData;
     public BuildingData BuildingData => buildingData;
-    Farmer currentFarmer = null;
-    [SerializeField] BoxCollider boxCollider = null;
     float time = 0;
 
     private void Update()
@@ -19,6 +19,7 @@ public class Building : MonoBehaviour,IInteract
             time = 0;
         }
     }
+    
     void GenerateResources() 
     {
         for (int i = 0; i < buildingData.ResourceEarn.Count; i++)
@@ -27,12 +28,26 @@ public class Building : MonoBehaviour,IInteract
             PlayerInventory.Instance.AddResource(_resource.ID, Mathf.RoundToInt(_resource.Amount * currentFarmer.Stat.ProductionMultiplicateur));
         }
     }
-    public bool AddFarmer(Farmer _currentFarmer)
+    
+    private void Init(BuildingData _buildingData)
     {
-        bool _farmer = currentFarmer;
-        if(!_farmer)
-            currentFarmer = _currentFarmer;
-        return !_farmer;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        Transform _mesh = Instantiate(_buildingData.Mesh, transform.position, Quaternion.identity);
+        _mesh.SetParent(transform);
+        Collider _collider = _mesh.GetComponent<Collider>();
+        boxCollider.size = _collider.bounds.extents * 2;
+        boxCollider.center = new Vector3(0, _collider.bounds.center.y, 0);
+        Destroy(_collider);
+    }
+    
+    public void RemoveFarmer(Farmer _currentFarmer)
+    {
+        if (!currentFarmer) return;
+        if (currentFarmer == _currentFarmer)
+            currentFarmer = null;
     }
     public void ChangeFarmer(Farmer _currentFarmer)
     {
@@ -41,32 +56,47 @@ public class Building : MonoBehaviour,IInteract
         else
             AddFarmer(_currentFarmer);
     }
-    private void Init(BuildingData _buildingData)
+    public bool AddFarmer(Farmer _currentFarmer)
     {
-        Transform _mesh = Instantiate(_buildingData.Mesh, transform.position, Quaternion.identity);
-        _mesh.SetParent(transform);
-        Collider _collider = _mesh.GetComponent<Collider>();
-        boxCollider.size = _collider.bounds.extents * 2;
-        boxCollider.center = new Vector3(0, _collider.bounds.center.y, 0);
-        Destroy(_collider);
+        bool _farmer = currentFarmer;
+        if(!_farmer)
+            currentFarmer = _currentFarmer;
+        return !_farmer;
     }
+
     public void SetBuildingData(BuildingData _buildingData)
     {
         buildingData = _buildingData;
         Init(buildingData);
     }
-    public void Upgrade()
+    
+    private void Upgrade()
     {
-        if (PlayerInventory.Instance.HaveEnoughResources(buildingData.ResourcesToUpgrade))
-            Debug.Log("Upgrade");
+        BuildingData _buildingData = buildingData.BuildingUpgrade;
+        if(_buildingData != null)
+        {
+            Init(_buildingData);
+            buildingData = _buildingData;
+            DisplayBuildingUI();
+        }
+    }
+    public void BuyUpgrade()
+    {
+        if (buildingData.BuildingUpgrade != null && PlayerInventory.Instance.UseResources(buildingData.ResourcesToUpgrade))
+            Upgrade();
         else
             Debug.Log("Can t Upgrade");
     }
-    public void Interaction()
+
+    private void DisplayBuildingUI()
     {
         BuildingUI _buildingUIPrefab = DataTableManager.Instance.BuildingDataTable.BuildingUI;
         BuildingUI _buildingUI = Instantiate(_buildingUIPrefab);
         _buildingUI.Init(this);
-        UIManager.Instance.DisplayInteractUI(_buildingUI);
+        UIManager.Instance.InteractWindow.DisplayInteractUI(_buildingUI);
+    }
+    public void Interaction()
+    {
+        DisplayBuildingUI();
     }
 }

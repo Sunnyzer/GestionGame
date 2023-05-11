@@ -9,6 +9,8 @@ public class BuildingChoice
     [SerializeField,HideInInspector] int id = 0;
     public static implicit operator BuildingData(BuildingChoice _choice)
     {
-        return DataTableManager.Instance.BuildingDataTable.Buildings[_choice.id];
+        if(_choice.id - 1 < 0)
+            return null;
+        return DataTableManager.Instance.BuildingDataTable.Buildings[_choice.id - 1];
     }
 }

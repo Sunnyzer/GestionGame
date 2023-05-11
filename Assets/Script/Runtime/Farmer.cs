@@ -4,6 +4,9 @@ public class Farmer : MonoBehaviour, IInteract, ISelectable
 {
     [SerializeField] FarmerStat stat;
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] Building myBuilding;
+
+    public Building MyBuilding => myBuilding;
     public FarmerStat Stat => stat;
 
     public void Interaction()
@@ -16,7 +19,12 @@ public class Farmer : MonoBehaviour, IInteract, ISelectable
     {
         if (_result.collider.TryGetComponent(out Building _building))
         {
+            if(myBuilding)
+            {
+                myBuilding.RemoveFarmer(this);
+            }
             _building.AddFarmer(this);
+            myBuilding = _building;
             Hand.Instance.Deselect();
             return;
         }

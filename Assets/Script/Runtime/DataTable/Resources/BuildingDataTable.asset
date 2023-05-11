@@ -25,7 +25,9 @@ MonoBehaviour:
     resourcesToUpgrade:
     - id: 1
       amount: 5
-    generationRate: 1
+    generationRate: 0.1
+    buildingUpgrade:
+      id: 4
   - name: Iron Mine
     mesh: {fileID: 4672332234487642, guid: ed86c303c0d761e4c9b890662dd882a3, type: 3}
     texture: {fileID: 0}
@@ -35,10 +37,14 @@ MonoBehaviour:
     resourcesToBuild:
     - id: 0
       amount: 50
-    resourcesToUpgrade: []
+    resourcesToUpgrade:
+    - id: 0
+      amount: 100
     generationRate: 1
+    buildingUpgrade:
+      id: 5
   - name: Gold Mine
-    mesh: {fileID: 4549183452752130, guid: 0f09218de0063234fa95d7fe64da775b, type: 3}
+    mesh: {fileID: 4139741094790214, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
     texture: {fileID: 0}
     resourcesEarn:
     - id: 2
@@ -46,5 +52,59 @@ MonoBehaviour:
     resourcesToBuild:
     - id: 1
       amount: 50
+    resourcesToUpgrade:
+    - id: 1
+      amount: 100
+    generationRate: 1
+    buildingUpgrade:
+      id: 6
+  - name: Timberman 2
+    mesh: {fileID: 4798515173781024, guid: cd3a9b7b609608042bc161be3e5d4a1c, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 0
+      amount: 5
+    resourcesToBuild: []
+    resourcesToUpgrade:
+    - id: 1
+      amount: 50
+    - id: 2
+      amount: 10
+    generationRate: 0.1
+    buildingUpgrade:
+      id: 7
+  - name: Iron Mine 2
+    mesh: {fileID: 4332631020768358, guid: 72c07751c5ab1274e907d46aa40a3134, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 1
+      amount: 5
+    resourcesToBuild: []
     resourcesToUpgrade: []
     generationRate: 1
+    buildingUpgrade:
+      id: 0
+  - name: Gold Mine 2
+    mesh: {fileID: 4369799291534954, guid: 95e645d1addbaad4ab26251fd2bdde4c, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 2
+      amount: 5
+    resourcesToBuild: []
+    resourcesToUpgrade: []
+    generationRate: 1
+    buildingUpgrade:
+      id: 0
+  - name: Timberman 3
+    mesh: {fileID: 4422828779368080, guid: 1135f5bcd489da04cb5f4fcb4355006b, type: 3}
+    texture: {fileID: 0}
+    resourcesEarn:
+    - id: 0
+      amount: 20
+    resourcesToBuild: []
+    resourcesToUpgrade:
+    - id: 0
+      amount: 0
+    generationRate: 1
+    buildingUpgrade:
+      id: 0

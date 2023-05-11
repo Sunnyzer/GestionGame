@@ -24,19 +24,16 @@ public class Hand : Singleton<Hand>
     {
         bool _hit = PlayerCursor.Instance.Hit(out RaycastHit _raycastHit, layerMask);
         if (!_hit) return;
-        if(selectable != null)
+        if (selectable != null && _raycastHit.collider.TryGetComponent(out ISelectable _selectable) && _selectable == selectable)
         {
-            if (_raycastHit.collider.TryGetComponent(out ISelectable _selectable) && _selectable == selectable)
-            {
-                selectable?.Deselect();
-                selectable = null;
-                return;
-            }
-            selectable.Select(_raycastHit);
+            Deselect();
             return;
         }
+        selectable?.Select(_raycastHit);
         IInteract _interact = _raycastHit.collider.GetComponent<IInteract>();
-        if (_interact == null) return;
-        _interact.Interaction();
+        if (_interact != null)
+        {
+            _interact.Interaction();
+        }
     }
 }

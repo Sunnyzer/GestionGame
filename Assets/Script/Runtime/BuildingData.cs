@@ -12,6 +12,7 @@ public class BuildingData : ISelectable
     [SerializeField] List<Resource> resourcesToBuild;
     [SerializeField] List<Resource> resourcesToUpgrade;
     [SerializeField] float generationRate = 1;
+    [SerializeField] BuildingChoice buildingUpgrade;
 
     public string Name => name;
     public Transform Mesh => mesh;
@@ -20,6 +21,7 @@ public class BuildingData : ISelectable
     public List<Resource> ResourcesToBuild => resourcesToBuild;
     public List<Resource> ResourcesToUpgrade => resourcesToUpgrade;
     public float GenerationRate => generationRate;
+    public BuildingData BuildingUpgrade => buildingUpgrade;
 
     public void CreateBuilding(Vector3 _position)
     {
@@ -29,8 +31,8 @@ public class BuildingData : ISelectable
     }
     public void Select(RaycastHit _result)
     {
-        CreateBuilding(_result.point);
-        Hand.Instance.Deselect();
+        if(_result.collider.gameObject == Ground.Instance.gameObject && PlayerInventory.Instance.UseResources(resourcesToBuild))
+            CreateBuilding(_result.point);
     }
     public void Deselect()
     {

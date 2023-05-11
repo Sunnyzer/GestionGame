@@ -5,13 +5,14 @@ public class InteractWindow : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI objectName = null;
     [SerializeField] Transform interactUI = null;
+ 
     public TextMeshProUGUI ObjectName => objectName;
     public Transform InteractUI => interactUI;
     public InteractUI currentInteractUI = null;
 
-    public void SetInteractUI(InteractUI _interactUI)
+    public void DisplayInteractUI(InteractUI _interactUI)
     {
-        if (currentInteractUI) 
+        if (currentInteractUI)
              Destroy(currentInteractUI.gameObject);
         currentInteractUI = _interactUI;
         currentInteractUI.transform.SetParent(interactUI);

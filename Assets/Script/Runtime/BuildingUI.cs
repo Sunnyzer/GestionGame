@@ -12,18 +12,17 @@ public class BuildingUI : InteractUI
 
     public void Init(Building _building)
     {
-        upgradeButton.onClick.AddListener(_building.Upgrade);
-        AddToGridResources(_building.BuildingData.ResourcesToUpgrade, gridResourcesToUpgrade.transform);
-        AddToGridResources(_building.BuildingData.ResourceEarn, gridResourceEarn.transform);
-    }
-    void AddToGridResources(List<Resource> _resources, Transform _grid)
-    {
-        for (int i = 0; i < _resources.Count; i++)
+        UIManager.Instance.InteractWindow.SetObjectName(_building.BuildingData.Name);
+        if (_building.BuildingData.BuildingUpgrade == null)
         {
-            ResourcesDataTable _resourcesDataTable = DataTableManager.Instance.ResourcesDataTable;
-            ResourceUI _resourceUI = Instantiate(_resourcesDataTable.ResourceUI, _grid);
-            _resourceUI.Init(_resources[i]);
+            upgradeButton.gameObject.SetActive(false);
         }
+        else
+        {
+            upgradeButton.onClick.AddListener(_building.BuyUpgrade);
+            Resource.AddToUIGridResources(_building.BuildingData.ResourcesToUpgrade, gridResourcesToUpgrade.transform);
+        }
+        Resource.AddToUIGridResources(_building.BuildingData.ResourceEarn, gridResourceEarn.transform);
     }
     private void OnDestroy()
     {
